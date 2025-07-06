@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 35</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <h1>Level 35</h1>
+  <div id="sentence">This is level 35, complete the sentence <span class='dropzone' id='drop1'></span>!</div>
+  <div class="word-bank"><div class='word' draggable='true'>word35</div><div class='word' draggable='true'>wrong35a</div><div class='word' draggable='true'>wrong35b</div></div>
+  <div id="feedback"></div>
+  <button onclick="checkAnswer()">Check Answer</button>
+
+  <div id="nextModal">
+    <div id="nextModalContent">
+      <h2>🎉 Great Job!</h2>
+      <p>You completed Level 35!</p>
+      <button id="nextBtn">Next</button>
+    </div>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    const dropZone = document.getElementById("drop1");
+    const feedback = document.getElementById("feedback");
+    const correctAnswer = "word35";
+    const words = document.querySelectorAll(".word");
+
+    words.forEach(word => {
+      word.addEventListener("dragstart", e => e.dataTransfer.setData("text", e.target.textContent));
+    });
+
+    dropZone.addEventListener("dragover", e => e.preventDefault());
+    dropZone.addEventListener("drop", e => {
+      e.preventDefault();
+      dropZone.textContent = e.dataTransfer.getData("text");
+    });
+
+    function checkAnswer() {
+      const answer = dropZone.textContent.trim();
+      if (!answer) {
+        feedback.textContent = "⚠️ Please choose a word.";
+        feedback.style.color = "orange";
+        return;
+      }
+      if (answer === correctAnswer) {
+        feedback.textContent = "✅ Correct!";
+        feedback.style.color = "lightgreen";
+        playSound("correct");
+        setTimeout(() => showModal("level36.html"), 1500);
+      } else {
+        feedback.textContent = "❌ Try again.";
+        feedback.style.color = "red";
+        playSound("wrong");
+      }
+    }
+  </script>
+</body>
+</html>

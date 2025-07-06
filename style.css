@@ -1,0 +1,232 @@
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', sans-serif;
+  background: linear-gradient(270deg, #1A1A1D, #3B1C32, #6A1E55, #A64D79);
+  background-size: 800% 800%;
+  animation: gradientShift 15s ease infinite;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+h1, h2 {
+  color: #FFDDC1;
+  text-shadow: 2px 2px #000;
+}
+
+.dropzone {
+  display: inline-block;
+  width: 140px;
+  height: 50px;
+  border: 2px dashed #FFDDC1;
+  vertical-align: middle;
+  margin-left: 10px;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.word-bank {
+  margin-top: 20px;
+}
+
+.word {
+  display: inline-block;
+  padding: 12px 18px;
+  margin: 10px;
+  background-color: #6A1E55;
+  color: white;
+  border-radius: 12px;
+  cursor: grab;
+  font-size: 1.2rem;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+}
+
+.word:hover {
+  transform: scale(1.1);
+}
+
+#feedback {
+  font-size: 1.4rem;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  background-color: #FF77A9;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+button:hover {
+  background-color: #FF5588;
+}
+
+#nextModal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+#nextModalContent {
+  background: #2a2a2d;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  box-shadow: 2px 2px 20px #000;
+}
+
+/* Progress Bar Styles */
+.progress-bar {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FF77A9, #FF5588);
+  transition: width 0.5s ease;
+  border-radius: 4px;
+}
+
+/* Explanation Box Styles */
+.explanation-box {
+  background: rgba(255, 221, 193, 0.15);
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  border-left: 4px solid #FFDDC1;
+  backdrop-filter: blur(5px);
+}
+
+.explanation-box h3 {
+  color: #FFDDC1;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.explanation-box p {
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+/* Container for better layout */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Enhanced button styles */
+button {
+  margin: 10px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  background: linear-gradient(45deg, #FF77A9, #FF5588);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+button:hover {
+  background: linear-gradient(45deg, #FF5588, #FF4477);
+  transform: translateY(-2px);
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+}
+
+/* Enhanced word styles */
+.word {
+  display: inline-block;
+  padding: 12px 18px;
+  margin: 10px;
+  background: linear-gradient(45deg, #6A1E55, #A64D79);
+  color: white;
+  border-radius: 12px;
+  cursor: grab;
+  font-size: 1.2rem;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.word:hover {
+  transform: scale(1.1);
+  border-color: #FFDDC1;
+  box-shadow: 3px 3px 15px rgba(0,0,0,0.4);
+}
+
+/* Enhanced dropzone styles */
+.dropzone {
+  display: inline-block;
+  width: 140px;
+  height: 50px;
+  border: 2px dashed #FFDDC1;
+  vertical-align: middle;
+  margin-left: 10px;
+  text-align: center;
+  line-height: 50px;
+  color: white;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.dropzone:hover {
+  border-color: #FF77A9;
+  background-color: rgba(255, 119, 169, 0.2);
+}

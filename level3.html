@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Level 3 - Present Continuous</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Level 3: Present Continuous</h1>
+    
+    <div id="sentence">She <span class='dropzone' id='drop1'></span> a book right now.</div>
+    
+    <div class="word-bank">
+      <div class='word' draggable='true'>is reading</div>
+      <div class='word' draggable='true'>reads</div>
+      <div class='word' draggable='true'>read</div>
+      <div class='word' draggable='true'>reading</div>
+    </div>
+    
+    <div id="feedback"></div>
+    <button onclick="checkAnswer()">Check Answer</button>
+    
+    <div id="nextModal">
+      <div id="nextModalContent">
+        <h2>🎉 Great Job!</h2>
+        <p>You completed Level 3!</p>
+        <button id="nextBtn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/levelData.js"></script>
+  <script src="../assets/js/levelGenerator.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grammar Realms - Home</title>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .avatar-list {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin: 40px 0;
+    }
+    
+    .avatar {
+      border: 3px solid transparent;
+      border-radius: 50%;
+      overflow: hidden;
+      width: 120px;
+      height: 120px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    
+    .avatar:hover {
+      transform: scale(1.1);
+      border-color: #FF77A9;
+      box-shadow: 0 0 20px rgba(255, 119, 169, 0.5);
+    }
+    
+    .avatar.selected {
+      border: 4px solid #FF77A9;
+      box-shadow: 0 0 25px rgba(255, 119, 169, 0.8);
+    }
+    
+    .story-box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 25px;
+      margin: 30px auto;
+      border-radius: 15px;
+      max-width: 600px;
+      color: white;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .start-button {
+      margin-top: 30px;
+      padding: 15px 40px;
+      font-size: 1.3rem;
+      background: linear-gradient(45deg, #FF77A9, #FF5588);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 119, 169, 0.3);
+      font-weight: bold;
+    }
+    
+    .start-button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 119, 169, 0.4);
+    }
+    
+    .start-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+    
+    .feature {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+    }
+    
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 Grammar Realms</h1>
+    <p class="subtitle">Embark on an epic journey to master grammar through interactive adventures!</p>
+    
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">🎯</div>
+        <h3>50 Levels</h3>
+        <p>Progressive challenges from beginner to expert</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🏆</div>
+        <h3>Earn Badges</h3>
+        <p>Collect achievements as you progress</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎮</div>
+        <h3>Interactive</h3>
+        <p>Drag and drop gameplay</p>
+      </div>
+    </div>
+
+    <h2>Choose Your Character</h2>
+    <p>Select an avatar to begin your quest!</p>
+
+    <div class="avatar-list" id="avatarList">
+      <div class="avatar" onclick="selectAvatar('Luna')">🦉</div>
+      <div class="avatar" onclick="selectAvatar('Max')">🦊</div>
+      <div class="avatar" onclick="selectAvatar('Zara')">😼</div>
+      <div class="avatar" onclick="selectAvatar('Leo')">🦁</div>
+    </div>
+
+    <div class="story-box" id="storyText">
+      <p>Select an avatar to see your character's story and begin your adventure!</p>
+    </div>
+
+    <button class="start-button" onclick="startGame()" disabled id="startBtn">🎮 Start Your Adventure</button>
+  </div>
+
+  <script>
+    const avatars = {
+      'Luna': '🦉 <strong>Luna the Wise Owl</strong><br>Luna is a patient and knowledgeable guide who loves helping learners understand the mysteries of grammar. With her wisdom, she\'ll help you master even the most complex language rules.',
+      'Max': '🦊 <strong>Max the Clever Fox</strong><br>Max is quick-witted and loves solving puzzles. His sharp mind and clever strategies will help you tackle grammar challenges with confidence and speed.',
+      'Zara': '😼 <strong>Zara the Curious Cat</strong><br>Zara is naturally curious and loves exploring new concepts. Her inquisitive nature will help you discover the fascinating world of words and language.',
+      'Leo': '🦁 <strong>Leo the Brave Lion</strong><br>Leo is courageous and determined. With his bold spirit, he\'ll help you face grammar challenges head-on and never give up until you succeed!'
+    };
+
+    function selectAvatar(name) {
+      console.log('selectAvatar called with:', name);
+      
+      // Store the selected avatar
+      localStorage.setItem('selectedAvatar', name);
+      
+      // Update the story text
+      document.getElementById("storyText").innerHTML = "<p>" + avatars[name] + "</p>";
+
+      // Update avatar selection visual
+      document.querySelectorAll('.avatar').forEach(a => a.classList.remove('selected'));
+      const selectedAvatar = [...document.querySelectorAll('.avatar')].find(el => el.innerHTML.includes(name));
+      if (selectedAvatar) {
+        selectedAvatar.classList.add('selected');
+      }
+
+      // Enable the start button
+      const startBtn = document.getElementById("startBtn");
+      if (startBtn) {
+        startBtn.disabled = false;
+        console.log('Avatar selected:', name, 'Button enabled:', !startBtn.disabled);
+      } else {
+        console.error('Start button not found!');
+      }
+    }
+
+    function startGame() {
+      // Reset game progress
+      localStorage.setItem('score', 0);
+      localStorage.setItem('badgeLevel', 0);
+      
+      console.log('Starting game, redirecting to level1.html...');
+      
+      // Show loading message
+      const startBtn = document.getElementById("startBtn");
+      startBtn.textContent = "🚀 Loading...";
+      startBtn.disabled = true;
+      
+      // Redirect to level 1
+      setTimeout(() => {
+        try {
+          window.location.href = 'levels/level1.html';
+        } catch (error) {
+          console.error('Error redirecting:', error);
+          alert('Error: ' + error.message);
+          startBtn.textContent = "🎮 Start Your Adventure";
+          startBtn.disabled = false;
+        }
+      }, 500);
+    }
+
+
+
+    // Check if user already has a selected avatar
+    window.addEventListener('load', function() {
+      console.log('Page loaded, checking for saved avatar...');
+      const savedAvatar = localStorage.getItem('selectedAvatar');
+      if (savedAvatar && avatars[savedAvatar]) {
+        console.log('Found saved avatar:', savedAvatar);
+        selectAvatar(savedAvatar);
+      } else {
+        console.log('No saved avatar found');
+      }
+    });
+  </script>
+</body>
+</html>
